@@ -57,5 +57,12 @@ class HtmlPublisher extends BasePublisher
                 $this->app['publishing.dir.output'].'/images'
             );
         }
+        // copy book css
+        if (file_exists($cssDir = $this->app['publishing.dir.contents'].'/css')) {
+            $this->app['filesystem']->mirror(
+                $cssDir,
+                $this->app['publishing.dir.output'].'/css'
+            );
+        }
     }
 }

@@ -90,6 +90,11 @@ class PdfPublisher extends BasePublisher
             $prince->addStyleSheet($customCss);
         }
 
+        // Add all custom css files to the Prince output
+        foreach(glob($this->app['publishing.dir.contents'].'/css/*.css') as $filename) {
+            $prince->addStyleSheet($filename);
+        }
+
         $errorMessages = array();
         $pdfBookFilePath = $this->app['publishing.dir.output'].'/book.pdf';
         $prince->convert_file_to_file($htmlBookFilePath, $pdfBookFilePath, $errorMessages);

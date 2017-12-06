@@ -103,6 +103,12 @@ class HtmlChunkedPublisher extends HtmlPublisher
         if (file_exists($imagesDir = $this->app['publishing.dir.contents'].'/images')) {
             $this->app['filesystem']->mirror($imagesDir, $this->app['publishing.dir.output'].'/images');
         }
+        
+        // copy book css
+        if (file_exists($cssDir = $this->app['publishing.dir.contents'].'/css')) {
+            $this->app['filesystem']->mirror($cssDir, $this->app['publishing.dir.output'].'/css');
+        }
+
     }
 
     /**
