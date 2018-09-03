@@ -47,6 +47,7 @@ class Prince
     private $pdfCreator = '';
     private $encrypt = false;
     private $encryptInfo = '';
+    private $debug = '';
 
     public function __construct($exePath)
     {
@@ -302,6 +303,14 @@ class Prince
             $this->encryptInfo .= '--disallow-annotate ';
         }
     }
+    
+    // Specify whether encryption should be applied to the output PDF file.
+    // Encryption will not be applied by default unless explicitly enabled.
+    // encrypt: True to enable PDF encryption.
+    public function setDebug($debug)
+    {
+        $this->debug = $debug;
+    }
 
     // Convert an XML or HTML file to a PDF file.
     // The name of the output PDF file will be the same as the name of the
@@ -509,6 +518,10 @@ class Prince
 
         if ($this->encrypt) {
             $cmdline .= '--encrypt '.$this->encryptInfo;
+        }
+
+        if ($this->debug) {
+            $cmdline .= '--debug ';
         }
 
         return $cmdline;
