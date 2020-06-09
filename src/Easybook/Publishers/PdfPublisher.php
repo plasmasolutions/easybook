@@ -59,6 +59,7 @@ class PdfPublisher extends BasePublisher
     public function assembleBook()
     {
         $tmpDir = $this->app['app.dir.cache'].'/'.uniqid('easybook_pdf_');
+        echo('Generating book in: '.$tmpDir);
         $this->app['filesystem']->mkdir($tmpDir);
 
         // implode all the contents to create the whole book
@@ -72,6 +73,7 @@ class PdfPublisher extends BasePublisher
         // use PrinceXML to transform the HTML book into a PDF book
         $prince = $this->app['prince'];
         $prince->setBaseURL($this->app['publishing.dir.contents'].'/images');
+        //$prince->setDebug(true);
 
         // Prepare and add stylesheets before PDF conversion
         if ($this->app->edition('include_styles')) {
