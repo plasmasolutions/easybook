@@ -18,7 +18,7 @@
 
     "config": {
         "platform": {
-            "php": "5.3.9"
+            "php": "7.4.3"
         }
     },
 
@@ -34,7 +34,7 @@
         "symfony/finder"            : "^2.8",
         "symfony/process"           : "^2.8",
         "symfony/yaml"              : "^2.8",
-        "twig/twig"                 : "^1.15",
+        "twig/twig"                 : "^1.0",
         "zendframework/zendpdf"     : "^2.0"
     },
 
